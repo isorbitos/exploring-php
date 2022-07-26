@@ -89,14 +89,23 @@ function magicWith77()
 }
 
 function simpleSquare(){
-    
+    for ($x=0; $x < 10; $x++) { 
+        $line = "";
+        for ($y=0; $y < 10; $y++) { 
+            $line .="*";
+        }
+        echo "<p>{$line}</p>";
+    }
 }
 
 ?>
 
 <body>
+    <p class="test">test text</p>
 
-    <div class="b-example-divider"></div>
+    <div class="b-example-divider">
+        <p>test text</p>
+    </div>
 
     <div class="container py-4">
         <div class="row align-items-md-stretch">
@@ -183,11 +192,11 @@ function simpleSquare(){
             <div class="col-md-4">
                 <div class="h-100 p-5 text-bg-dark rounded-3">
                     <h2>Task01 Part03</h2>
-                    <p>
+                    
                         <?php
                         random300numbers();
                         ?>
-                    </p>
+                    
                 </div>
             </div>
 
@@ -203,12 +212,14 @@ function simpleSquare(){
             </div>
 
             <div class="col-md-4">
-                <div class="h-100 p-5 text-bg-dark rounded-3">
+                <div class="h-100 p-5 text-bg-dark rounded-3 ">
                     <h2>Task03 Part03</h2>
-                    <p>
+                    <div class="square">
                         <?php
+                         simpleSquare();
                         ?>
-                    </p>
+                    </div>
+                        
                 </div>
             </div>
 
@@ -217,8 +228,6 @@ function simpleSquare(){
 
     <div class="container py-4"></div>
     <div class="container py-4"></div>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 
 </html>
