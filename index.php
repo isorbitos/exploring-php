@@ -15,9 +15,12 @@ function nameAndAge()
 {
     $name = "Jonas";
     $surname = "Jonaitis";
-    $bDate = 1888;
-    $cDate = 2111;
-    return printf("Aš esu %s %s. Man yra %s metai(ų)", $name, $surname, $cDate - $bDate);
+    $bDate = 1900;
+    $cDate = 2000;
+    printf("Aš esu %s %a. Man yra %j metai(ų)", $name, $surname, ($cDate - $bDate)) ;
+
+    // echo printf("Aš esu %s %s. Man yra %s metai(ų)", $name, $surname, $cDate - $bDate);
+    // echo "Aš esu {$name} {$surname}. Man yra {$cDate-$bDate} metai(ų)";
 }
 
 function printDivision()
@@ -98,14 +101,61 @@ function simpleSquare(){
     }
 }
 
+function generateHtag($text, $hSize){
+    if(1 <= $hSize and $hSize <=6 ){
+        echo "<h{$hSize}>{$text}</h{$hSize}>";
+    }else{
+        echo "<h{$hSize}>wrog tag size</h{$hSize}>";
+    }
+}
+
+function generateRandomString(){
+    $rand = md5(microtime());
+    return $rand;
+}
+
+function magicWithRandomString(){
+    $randomString = generateRandomString();
+    $numbers = "";
+    foreach(str_split($randomString) as $char){
+        if(is_numeric($char)){
+            $numbers .= $char;
+        }elseif(strlen($numbers) > 0){
+            generateHtag($numbers,1);
+            $numbers = "";
+        }
+    }
+    if(strlen($numbers) > 0){
+        generateHtag($numbers,1);
+    }
+}
+
+function isPrime($number){
+    $toReturn = 0;
+    for ($x=2; $x <$number/2 ; $x++) { 
+        if($number % $x == 0){
+            $toReturn++;
+        }
+    }
+    return $toReturn;
+}
+
+
+
+function randomArray(){
+    $myArray = array();
+    for ($x=0; $x < 100; $x++) { 
+        array_push($myArray, random_int(33,77));
+    }
+    usort($myArray, fn($x, $y)=> isPrime($y) - isPrime($x));
+    var_export($myArray);
+}
+
+
 ?>
 
 <body>
-    <p class="test">test text</p>
-
-    <div class="b-example-divider">
-        <p>test text</p>
-    </div>
+    <div class="b-example-divider"></div>
 
     <div class="container py-4">
         <div class="row align-items-md-stretch">
@@ -114,7 +164,7 @@ function simpleSquare(){
                     <h2>Task01 Part01</h2>
                     <p>
                         <?php
-                        echo nameAndAge();
+                            nameAndAge();
                         ?>
                     </p>
                 </div>
@@ -226,7 +276,47 @@ function simpleSquare(){
         </div>
     </div>
 
-    <div class="container py-4"></div>
+    <div class="b-example-divider"></div>
+
+<div class="container py-4">
+    <div class="row align-items-md-stretch">
+        <div class="col-md-4">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+                <h2>Task02 Part04</h2>
+                
+                    <?php
+                    generateHtag("There are many variations of passages of Lorem Ipsum available",4);
+                    ?>
+                
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Task03 Part04</h2>
+                <p>
+                    <?php
+                        magicWithRandomString();
+                    ?>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="h-100 p-5 text-bg-dark rounded-3 ">
+                <h2>Task05 Part03</h2>
+                <div class="square">
+                    <?php
+                     randomArray();
+                    ?>
+                </div>
+                    
+            </div>
+        </div>
+
+    </div>
+</div>
+
     <div class="container py-4"></div>
 </body>
 

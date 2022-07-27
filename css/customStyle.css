@@ -7,10 +7,6 @@
     inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
 }
 
-.b-example-divider p{
-  letter-spacing: 2rem !important;
-
-}
 
 .square p{
   letter-spacing: 1.5rem ;
